@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Early Birds Speaking Club</title>
+<meta name="description" content="Early Birds Speaking Club — a space for women to talk, connect and grow. Weekly English speaking meetups, all levels welcome.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf6ee;
+    --paper:#fffdf9;
+    --ink:#1f2a33;
+    --muted:#5d6872;
+    --teal:#2f6f73;
+    --teal-deep:#1d4a4f;
+    --sky:#cfe4e3;
+    --blush:#f4c9c4;
+    --rose:#e48c84;
+    --sun:#ffd84d;
+    --leaf:#8cc63f;
+    --line:#ead9c6;
+    --radius:28px;
+    --shadow:0 20px 50px -24px rgba(31,42,51,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Outfit",system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  [hidden]{display:none!important}
+  main{overflow-x:clip}
+  img,video{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.02em}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+  h2{font-size:clamp(2rem,4.2vw,3.2rem)}
+  h3{font-size:1.4rem}
+  em{font-style:italic;color:var(--teal)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+  .eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;transition:transform .2s,box-shadow .2s,background .2s;border:2px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 24px -10px rgba(47,111,115,.7)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--teal-deep)}
+  .btn-ghost{border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .btn svg{width:18px;height:18px}
+
+  /* announcement */
+  .announce{background:var(--teal-deep);color:#fff;font-size:.92rem;text-align:center;padding:10px 16px}
+  .announce a{color:var(--sun);font-weight:600;text-decoration:none;margin-left:8px;white-space:nowrap}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.86);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+  header.nav.scrolled{border-color:var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-mark{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--blush));display:grid;place-items:center;overflow:hidden;flex-shrink:0;box-shadow:inset 0 0 0 2px #fff,0 4px 12px -6px rgba(0,0,0,.3)}
+  .logo-mark img{width:100%;height:100%;object-fit:cover}
+  .logo-text{font-family:"Fraunces",serif;font-weight:600;font-size:1.2rem;line-height:1}
+  .logo-text small{display:block;font-family:"Outfit",sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:500;font-size:.98rem;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.nav-cta{padding:11px 22px;font-size:.92rem;color:#fff}
+  .menu-btn{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+  .menu-btn span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;border-radius:2px}
+
+  /* hero */
+  .hero{padding:64px 0 90px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero h1{margin:18px 0 22px;position:relative;z-index:0}
+  .hero h1 .hl{position:relative;white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:-4px;right:-4px;bottom:.08em;height:.32em;background:var(--sun);z-index:-1;border-radius:6px;transform:rotate(-1deg)}
+  .hero .lead{font-size:1.2rem;color:var(--muted);max-width:30ch;margin-bottom:12px}
+  .hero .lead strong{color:var(--ink);font-weight:600}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .hero-note{margin-top:18px;font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .avatars{display:flex}
+  .avatars span{width:30px;height:30px;border-radius:50%;border:2px solid var(--cream);margin-left:-8px;display:grid;place-items:center;font-size:.9rem}
+  .avatars span:first-child{margin-left:0}
+
+  .hero-media{position:relative}
+  .video-frame{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;max-height:78vh;margin-inline:auto;background:linear-gradient(160deg,var(--sky),var(--blush));box-shadow:var(--shadow);transform:rotate(1.5deg)}
+  .video-frame video{width:100%;height:100%;object-fit:cover}
+  .video-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--teal-deep);font-family:"Fraunces",serif;font-size:1.3rem}
+  .video-fallback .bird{font-size:4rem;display:block;margin-bottom:8px}
+  .video-frame.has-video .video-fallback{display:none}
+  .sound-btn{position:absolute;right:16px;bottom:16px;z-index:3;background:rgba(255,255,255,.9);border:0;border-radius:999px;padding:10px 16px;font:600 .85rem "Outfit",sans-serif;cursor:pointer;display:flex;gap:8px;align-items:center}
+  .sticker{position:absolute;z-index:4;background:var(--paper);border-radius:18px;padding:12px 16px;box-shadow:var(--shadow);font-weight:500;font-size:.92rem;display:flex;align-items:center;gap:10px}
+  .sticker b{font-family:"Fraunces",serif;font-size:1.5rem;line-height:1}
+  .sticker.s1{left:-34px;top:12%;transform:rotate(-4deg);animation:float 6s ease-in-out infinite}
+  .sticker.s2{right:-24px;bottom:16%;background:var(--sun);transform:rotate(3deg);animation:float 7s ease-in-out infinite reverse}
+  .sticker.s3{left:-12px;bottom:-22px;background:var(--leaf);color:var(--ink);font-family:"Fraunces",serif;font-size:1.15rem;font-weight:600;transform:rotate(-2deg)}
+  @keyframes float{50%{translate:0 -10px}}
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:-1}
+  .blob.b1{width:380px;height:380px;background:var(--blush);right:-80px;top:20px}
+  .blob.b2{width:300px;height:300px;background:var(--sky);left:-120px;bottom:-40px}
+
+  /* marquee */
+  .marquee{background:var(--ink);color:var(--cream);padding:20px 0;overflow:hidden;transform:rotate(-1.2deg);margin:0 -20px}
+  .marquee-track{display:flex;gap:44px;width:max-content;animation:scroll 38s linear infinite;font-family:"Fraunces",serif;font-size:1.5rem;font-style:italic}
+  .marquee-track span{display:flex;align-items:center;gap:44px;white-space:nowrap}
+  .marquee-track span::after{content:"✦";color:var(--sun);font-style:normal;font-size:1rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section{padding:110px 0}
+  .section-head{max-width:640px;margin-bottom:56px}
+  .section-head h2{margin:14px 0 16px}
+  .section-head p{color:var(--muted);font-size:1.12rem}
+  .center{text-align:center;margin-inline:auto}
+
+  /* why */
+  .why-intro{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:56px}
+  .why-intro p{color:var(--muted);font-size:1.12rem}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card .icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:1.7rem;margin-bottom:22px}
+  .card:nth-child(1) .icon{background:var(--blush)}
+  .card:nth-child(2) .icon{background:var(--sky)}
+  .card:nth-child(3) .icon{background:var(--sun)}
+  .card h3{margin-bottom:10px}
+  .card p{color:var(--muted)}
+
+  /* how */
+  .how{background:var(--teal-deep);color:var(--cream);border-radius:48px;margin:0 16px;position:relative;overflow:hidden}
+  .how .eyebrow{color:var(--sun)}
+  .how em{color:var(--sun)}
+  .how .section-head p{color:rgba(251,246,238,.75)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+  .step{border-top:1px solid rgba(255,255,255,.22);padding-top:26px;counter-increment:step}
+  .step::before{content:"0" counter(step);font-family:"Fraunces",serif;font-size:3rem;font-style:italic;color:var(--blush);display:block;line-height:1;margin-bottom:16px}
+  .step h3{margin-bottom:10px;font-size:1.3rem}
+  .step p{color:rgba(251,246,238,.72);font-size:.98rem}
+  .how-foot{margin-top:56px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:9px 18px;font-size:.92rem}
+
+  .days{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
+  .day-sky{background:var(--sky)}
+  .offline{display:flex;gap:20px;align-items:center;background:var(--sun);color:var(--ink);border-radius:var(--radius);padding:24px 30px;margin-bottom:64px}
+  .offline-icon{font-size:2.2rem;flex-shrink:0}
+  .offline h3{font-size:1.4rem;margin-bottom:4px}
+  .offline p{color:#4a4632}
+  .plans{display:grid;grid-template-columns:repeat(2,minmax(0,420px));gap:24px;justify-content:center}
+  .plan{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:40px 34px;display:flex;flex-direction:column}
+  .plan-featured{border:2px solid var(--teal);box-shadow:var(--shadow)}
+  .plan-badge{position:absolute;top:-14px;left:34px;background:var(--teal);color:#fff;border-radius:999px;padding:5px 14px;font-size:.8rem;font-weight:600}
+  .plan h3{font-size:1.6rem}
+  .plan-desc{color:var(--muted);margin-top:4px}
+  .price{display:flex;align-items:baseline;gap:6px;margin-top:26px}
+  .price b{font-family:"Fraunces",serif;font-size:3.6rem;font-weight:600;line-height:1;letter-spacing:-.02em}
+  .price span{font-family:"Fraunces",serif;font-size:2rem;color:var(--teal)}
+  .per{color:var(--muted);font-size:.95rem;margin-bottom:24px}
+  .plan ul{list-style:none;display:grid;gap:12px;margin-bottom:32px;flex:1}
+  .plan li{display:flex;gap:10px;align-items:flex-start}
+  .plan li svg{width:20px;height:20px;flex-shrink:0;color:var(--teal);margin-top:3px}
+  .plan .btn{justify-content:center}
+  .day{background:var(--cream);color:var(--ink);border-radius:var(--radius);padding:30px 30px 32px}
+  .day-alt{background:var(--blush)}
+  .day-tag{display:inline-block;background:var(--ink);color:var(--cream);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:600;letter-spacing:.04em;margin-bottom:16px}
+  .day h3{font-size:1.7rem;margin-bottom:8px}
+  .day p{color:var(--muted)}
+
+  /* instagram */
+  .ig-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+  .ig-head .section-head{margin-bottom:0}
+  .ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .ig-post{position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:var(--line)}
+  .ig-post img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .ig-post:hover img{transform:scale(1.05)}
+  .ig-post::after{content:"";position:absolute;inset:0;background:rgba(29,74,79,0);transition:background .3s}
+  .ig-post:hover::after{background:rgba(29,74,79,.25)}
+  .ig-badge{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,255,255,.92);border-radius:999px;padding:4px 10px;font-size:.75rem;font-weight:600}
+
+  .reels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+  .reel{position:relative;display:block;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:var(--ink)}
+  .reel video{width:100%;height:100%;object-fit:cover}
+  .reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.6))}
+  .reel-cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;color:#fff;font-weight:600;font-size:.95rem;line-height:1.3}
+
+  /* checklist split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .split-visual{position:relative;aspect-ratio:4/5;max-height:640px;border-radius:50% 50% var(--radius) var(--radius);background:linear-gradient(170deg,var(--blush),#f9e2d6 60%,var(--sky));display:grid;place-items:center;overflow:hidden}
+  .quote-bubble{background:var(--paper);border-radius:24px 24px 24px 6px;padding:16px 22px;max-width:80%;font-size:1.1rem!important;box-shadow:var(--shadow);font-family:"Fraunces",serif;font-size:1.25rem;line-height:1.35}
+  .quote-bubble.alt{border-radius:24px 24px 6px 24px;background:var(--teal);color:#fff;justify-self:end;margin-top:16px}
+  .split-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(29,74,79,.55))}
+  .bubbles{display:grid;width:86%;position:absolute;bottom:28px;left:7%;z-index:2}
+  .checks{list-style:none;margin:28px 0 36px;display:grid;gap:16px}
+  .checks li{display:flex;gap:14px;align-items:flex-start;font-size:1.06rem}
+  .checks li::before{content:"✓";flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--leaf);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:.9rem;margin-top:1px}
+
+  /* founders */
+  .founders{background:var(--paper);border-block:1px solid var(--line)}
+  .founder-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:900px;margin-inline:auto}
+  .founder{text-align:center;padding:12px}
+  .founder .photo{width:200px;height:200px;border-radius:50%;margin:0 auto 22px;background:linear-gradient(140deg,var(--sky),var(--blush));display:grid;place-items:center;font-family:"Fraunces",serif;font-size:3.4rem;color:var(--teal-deep);overflow:hidden;box-shadow:0 0 0 8px var(--cream),0 0 0 9px var(--line)}
+  .founder .photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .founder .role{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+  .founder a.ig-pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600;color:var(--teal);text-decoration:none;transition:background .2s,color .2s}
+  .founder a.ig-pill:hover{background:var(--teal);color:#fff;text-decoration:none}
+  .founder a.ig-pill svg{width:18px;height:18px}
+  .founder h3{margin-bottom:4px}
+  .founder a{color:var(--teal);font-weight:500;text-decoration:none}
+  .founder a:hover{text-decoration:underline}
+  .founder-note{max-width:640px;margin:48px auto 0;text-align:center;font-family:"Fraunces",serif;font-size:1.35rem;line-height:1.5;font-style:italic;color:var(--ink)}
+
+  /* faq */
+  .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+  details{border-bottom:1px solid var(--line);padding:22px 0}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;font-weight:600;font-size:1.12rem}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:"Fraunces",serif;font-size:1.6rem;line-height:1;color:var(--teal);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);margin-top:12px;max-width:60ch}
+
+  /* final cta */
+  .final{padding:40px 0 110px}
+  .final-card{background:var(--sun);border-radius:48px;padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+  .final-card h2{max-width:16ch;margin:16px auto 18px}
+  .final-card p{max-width:46ch;margin:0 auto 34px;font-size:1.12rem;color:#3c3a2c}
+  .final-card .eyebrow{color:var(--ink)}
+  .final-card .plus{position:absolute;font-family:"Outfit",sans-serif;font-weight:700;color:var(--leaf);font-size:7rem;line-height:1}
+  .final-card .plus.p1{left:6%;top:12%}
+  .final-card .plus.p2{right:7%;bottom:8%;font-size:5rem;color:var(--teal)}
+  .final-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--ink);color:rgba(251,246,238,.75);padding:56px 0 36px;font-size:.95rem}
+  .foot-grid{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+  footer .logo-text{color:var(--cream)}
+  footer .logo-text small{color:rgba(251,246,238,.55)}
+  .foot-links{display:flex;gap:28px;flex-wrap:wrap;list-style:none}
+  .foot-links a{text-decoration:none}
+  .foot-links a:hover{color:var(--sun)}
+  .foot-bottom{margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  @media (max-width:960px){
+    .hero-grid,.why-intro,.split,.faq-grid{grid-template-columns:1fr;gap:40px}
+    .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:36px 20px}
+    .days{grid-template-columns:1fr}
+    .ig-grid,.reels{grid-template-columns:repeat(2,1fr)}
+    .hero-media{max-width:440px;margin-inline:auto;width:100%}
+    .sticker.s1{left:-8px}.sticker.s2{right:-8px}
+    .split-visual{max-width:460px;width:100%;margin-inline:auto}
+  }
+  @media (max-width:760px){
+    body{font-size:16px}
+    section{padding:76px 0}
+    .nav-links{position:fixed;top:76px;left:0;right:0;flex-direction:column;background:var(--cream);padding:28px 16px 36px;gap:22px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .25s,transform .25s,visibility .25s}
+    .nav-links.open{opacity:1;visibility:visible;transform:none}
+    .menu-btn{display:block}
+    .hero{padding:36px 0 70px}
+    .how{border-radius:32px;margin:0 8px}
+    .steps{grid-template-columns:1fr}
+    .days{grid-template-columns:1fr}
+    .plans{grid-template-columns:1fr}
+    .offline{flex-direction:column;align-items:flex-start;padding:24px}
+    .ig-grid,.reels{gap:10px}
+    .founder-grid{grid-template-columns:1fr}
+    .final-card{padding:60px 22px;border-radius:32px}
+    .final-card .plus{font-size:4rem}
+    .final-card .plus.p2{font-size:3rem}
+    .marquee-track{font-size:1.2rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">🗓️ Online Tue · Thu · Sat at 15:00 + offline every 2 weeks
+  <a href="#join">Save your seat →</a>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo" aria-label="Early Birds Speaking Club home">
+      <span class="logo-mark"><img src="assets/logo.jpg" alt="" onerror="this.replaceWith(document.createTextNode('🐦'))"></span>
+      <span class="logo-text">Early Birds<small>Speaking Club</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#how">Meetups</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#founders">Founders</a></li>
+      <li><a href="#instagram">Community</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#join" class="btn btn-primary nav-cta">Join us</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Early Birds Speaking Club</span>
+        <h1>Speak English with <span class="hl">confidence</span>, one meetup at a time.</h1>
+        <p class="lead"><strong>A space for women to talk, connect &amp; grow.</strong> Real conversations, real people, zero judgement.</p>
+        <div class="hero-actions">
+          <a href="#join" class="btn btn-primary">Join the next meetup
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#how" class="btn btn-ghost">How it works</a>
+        </div>
+        <div class="hero-note">
+          <div class="avatars"><span style="background:var(--blush)">🌸</span><span style="background:var(--sky)">🕊️</span><span style="background:var(--sun)">☕</span></div>
+          3× a week online + offline meetups · 🌍 all welcome
+        </div>
+      </div>
+
+      <div class="hero-media reveal">
+        <div class="video-frame" id="videoFrame">
+          <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/reels/club.jpg">
+            <source src="assets/reels/club.mp4" type="video/mp4">
+          </video>
+          <div class="video-fallback"><div><span class="bird">🐦</span>A morning with the birdies</div></div>
+          <button class="sound-btn" id="soundBtn" type="button" hidden>🔇 Sound on</button>
+        </div>
+        <div class="sticker s1"><b>🗓️</b> Tue · Thu · Sat · 15:00</div>
+        <div class="sticker s2"><b>💬</b> Speak from day one</div>
+        <div class="sticker s3">+ find your community</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>talk</span><span>connect</span><span>grow</span><span>no judgement</span><span>real conversations</span><span>new friends</span><span>coffee &amp; chats</span><span>speak up</span>
+      <span>talk</span><span>connect</span><span>grow</span><span>no judgement</span><span>real conversations</span><span>new friends</span><span>coffee &amp; chats</span><span>speak up</span>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="why-intro reveal">
+        <div>
+          <span class="eyebrow">Finally</span>
+          <h2 style="margin-top:14px">A place to practise English <em>without the pressure.</em></h2>
+        </div>
+        <p>You already know more English than you think. What's missing is real speaking practice in a room where it's okay to pause, search for a word, and make mistakes. That's what Early Birds is for.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="icon">🌸</div>
+          <h3>Made for women</h3>
+          <p>A warm, friendly circle where you can be yourself, share your opinions freely, and come as you are.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">💬</div>
+          <h3>Real conversations</h3>
+          <p>No textbooks, no lectures. We talk about life, ideas and everything in between, just like real life.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">🌱</div>
+          <h3>Grow every week</h3>
+          <p>Show up regularly and watch your confidence build. Small steps, every meetup, with people cheering you on.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our meetups</span>
+        <h2>What happens at an <em>Early Birds</em> meetup?</h2>
+        <p>Three times a week we meet online, and every two weeks we get together in person. Join from anywhere, just bring your voice.</p>
+      </div>
+      <div class="days reveal">
+        <article class="day">
+          <span class="day-tag">Tuesday · 15:00 · online</span>
+          <h3>Everyday English ☕</h3>
+          <p>Fun, everyday topics to get you chatting: movies, travel, food, habits and more.</p>
+        </article>
+        <article class="day day-alt">
+          <span class="day-tag">Thursday · 15:00 · online</span>
+          <h3>Health English 🌿</h3>
+          <p>Conversations about wellbeing, motivation and taking care of yourself, all in English.</p>
+        </article>
+        <article class="day day-sky">
+          <span class="day-tag">Saturday · 15:00 · online</span>
+          <h3>Academic English 🎓</h3>
+          <p>Level up for study and work: discussions, presenting ideas and speaking with structure.</p>
+        </article>
+      </div>
+      <div class="offline reveal">
+        <span class="offline-icon">🤝</span>
+        <div><h3>Offline meetups, every 2 weeks</h3><p>Once every two weeks we meet face to face to talk, play and connect. Dates and venue are announced on Instagram.</p></div>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Say hello</h3><p>Join the call, meet the group and settle in. Newcomers always get a warm welcome.</p></div>
+        <div class="step reveal"><h3>Warm up</h3><p>Light games and icebreakers to get everyone talking, no preparation needed.</p></div>
+        <div class="step reveal"><h3>Topic of the week</h3><p>Small-group conversations around a fun theme, so everyone gets plenty of time to speak.</p></div>
+        <div class="step reveal"><h3>Share &amp; connect</h3><p>Wrap up together, swap new words and phrases, and leave with new friends.</p></div>
+      </div>
+      <div class="how-foot reveal">
+        <span class="chip">🗓️ Tue · Thu · Sat</span>
+        <span class="chip">⏰ 15:00</span>
+        <span class="chip">💻 Online (Zoom / Google Meet)</span>
+        <span class="chip">🤝 Offline every 2 weeks</span>
+        <span class="chip">🌍 All levels welcome</span>
+        <span class="chip">💌 DM us to join</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPLIT -->
+  <section>
+    <div class="wrap split">
+      <div class="split-visual reveal">
+        <video class="split-video" autoplay muted loop playsinline preload="metadata" poster="assets/reels/selfie.jpg" aria-label="A member speaking at an Early Birds event">
+          <source src="assets/reels/selfie.mp4" type="video/mp4">
+        </video>
+        <div class="bubbles" aria-hidden="true">
+          <div class="quote-bubble">"I was so nervous to speak at first…"</div>
+          <div class="quote-bubble alt">"…and now I can't stop talking!" 🐦</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Join the flock</span>
+        <h2 style="margin-top:14px">You belong here if you…</h2>
+        <ul class="checks">
+          <li>Understand English but freeze when it's time to speak</li>
+          <li>Want to practise with real people, not just apps</li>
+          <li>Are looking for a friendly community of women</li>
+          <li>Want a weekly habit that helps you grow</li>
+        </ul>
+        <a href="#join" class="btn btn-primary">Save your seat</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <div class="section-head center reveal" style="text-align:center">
+        <span class="eyebrow">New prices</span>
+        <h2>Simple, <em>friendly</em> pricing</h2>
+        <p>Join online, meet us in person, or do both.</p>
+      </div>
+      <div class="plans">
+        <article class="plan plan-featured reveal">
+          <span class="plan-badge">Most popular</span>
+          <h3>Online membership</h3>
+          <p class="plan-desc">All our weekly online meetups</p>
+          <div class="price"><b>6,000</b><span>₸</span></div>
+          <p class="per">per month</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Tuesday · Everyday English</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Thursday · Health English</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Saturday · Academic English</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>All at 15:00 on Zoom / Google Meet</li>
+          </ul>
+          <a href="https://ig.me/m/early_birds_sc" target="_blank" rel="noopener" class="btn btn-primary">Become a member</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Offline meetup</h3>
+          <p class="plan-desc">Meet the flock face to face</p>
+          <div class="price"><b>5,000</b><span>₸</span></div>
+          <p class="per">per meeting</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Every 2 weeks, in person</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Speaking games &amp; real conversations</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Meet members and make friends</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Dates announced on Instagram</li>
+          </ul>
+          <a href="https://ig.me/m/early_birds_sc" target="_blank" rel="noopener" class="btn btn-ghost">Book a seat</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDERS -->
+  <section class="founders" id="founders">
+    <div class="wrap">
+      <div class="section-head center reveal" style="text-align:center">
+        <span class="eyebrow">Meet the founders</span>
+        <h2>Hey, we're the <em>birdies</em> behind the club</h2>
+      </div>
+      <div class="founder-grid">
+        <div class="founder reveal">
+          <div class="photo"><img src="assets/akniyet.jpg" alt="Akniyet" onerror="this.replaceWith(document.createTextNode('A'))"></div>
+          <h3>Akniyet</h3>
+          <p class="role">Co-founder</p>
+          <a class="ig-pill" href="https://www.instagram.com/akniyettt/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@akniyettt</a>
+        </div>
+        <div class="founder reveal">
+          <div class="photo"><img src="assets/makhpal.jpg" alt="Makhpal" onerror="this.replaceWith(document.createTextNode('M'))"></div>
+          <h3>Makhpal</h3>
+          <p class="role">Co-founder</p>
+          <a class="ig-pill" href="https://www.instagram.com/makhpal_manarbek/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@makhpal_manarbek</a>
+        </div>
+      </div>
+      <p class="founder-note reveal">"We started Early Birds because speaking a new language is easier with friends. Come as you are, and we'll grow together." 💛</p>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram">
+    <div class="wrap">
+      <div class="ig-head reveal">
+        <div class="section-head">
+          <span class="eyebrow">Fresh from the flock</span>
+          <h2 style="margin-top:14px">Life at <em>Early Birds</em></h2>
+          <p>Topics, moments and behind-the-scenes from our Instagram.</p>
+        </div>
+        <a href="https://www.instagram.com/early_birds_sc/" target="_blank" rel="noopener" class="btn btn-ghost">Follow @early_birds_sc</a>
+      </div>
+      <div class="reels">
+        <a class="reel reveal" href="https://www.instagram.com/reel/Df96pd7grb2/" target="_blank" rel="noopener" aria-label="How I started my own English club (opens Instagram)">
+          <video muted loop playsinline preload="none" poster="assets/reels/club.jpg"><source src="assets/reels/club.mp4" type="video/mp4"></video>
+          <span class="ig-badge">▶ Reel</span><span class="reel-cap">How I started my own English club</span>
+        </a>
+        <a class="reel reveal" href="https://www.instagram.com/reel/DfwNvEmoTxB/" target="_blank" rel="noopener" aria-label="Coffee and conversation (opens Instagram)">
+          <video muted loop playsinline preload="none" poster="assets/reels/coffee.jpg"><source src="assets/reels/coffee.mp4" type="video/mp4"></video>
+          <span class="ig-badge">▶ Reel</span><span class="reel-cap">Coffee and conversation</span>
+        </a>
+        <a class="reel reveal" href="https://www.instagram.com/reel/DffAkmbgrri/" target="_blank" rel="noopener" aria-label="Speaking up (opens Instagram)">
+          <video muted loop playsinline preload="none" poster="assets/reels/selfie.jpg"><source src="assets/reels/selfie.mp4" type="video/mp4"></video>
+          <span class="ig-badge">▶ Reel</span><span class="reel-cap">Speaking up</span>
+        </a>
+        <a class="reel reveal" href="https://www.instagram.com/reel/DfMVpDrIPmc/" target="_blank" rel="noopener" aria-label="Behind the scenes (opens Instagram)">
+          <video muted loop playsinline preload="none" poster="assets/reels/clipboard.jpg"><source src="assets/reels/clipboard.mp4" type="video/mp4"></video>
+          <span class="ig-badge">▶ Reel</span><span class="reel-cap">Behind the scenes</span>
+        </a>
+      </div>
+      <div class="ig-grid">
+        <a class="ig-post reveal" href="https://www.instagram.com/p/Df6VR3bgMgu/" target="_blank" rel="noopener"><img src="assets/ig/p02.jpg" alt="Join us and find your community" loading="lazy"></a>
+        <a class="ig-post reveal" href="https://www.instagram.com/p/DftQhuEDNYn/" target="_blank" rel="noopener"><img src="assets/ig/p05.jpg" alt="Tuesday Talk: My favourite movie genre" loading="lazy"></a>
+        <a class="ig-post reveal" href="https://www.instagram.com/p/DfWTd4hCJMl/" target="_blank" rel="noopener"><img src="assets/ig/p08.jpg" alt="What to do when there is no motivation" loading="lazy"></a>
+        <a class="ig-post reveal" href="https://www.instagram.com/p/De_fGSIiM-8/" target="_blank" rel="noopener"><img src="assets/ig/p10.jpg" alt="We came for English, we stayed for the conversations" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap faq-grid">
+      <div class="reveal">
+        <span class="eyebrow">Questions?</span>
+        <h2 style="margin-top:14px">Good to know</h2>
+        <p style="color:var(--muted);margin-top:16px">Can't find your answer? Send us a message on Instagram and we'll get back to you.</p>
+      </div>
+      <div class="reveal">
+        <details open><summary>What level of English do I need?</summary><p>Any level is welcome. If you can follow a simple conversation, you're ready. We'll help you with the rest.</p></details>
+        <details><summary>Who can join?</summary><p>Early Birds is a space created for women to talk, connect and grow. Everyone who comes with kindness and an open mind is welcome.</p></details>
+        <details><summary>When and where do you meet?</summary><p>Online three times a week at 15:00 on Zoom or Google Meet: <strong>Everyday English</strong> on Tuesday, <strong>Health English</strong> on Thursday and <strong>Academic English</strong> on Saturday. Every two weeks we also meet offline. We post each topic on Instagram beforehand.</p></details>
+        <details><summary>How much does it cost?</summary><p>The online membership is <strong>6,000 ₸ per month</strong> and covers our online meetups. Offline meetups are <strong>5,000 ₸ per meeting</strong>. See <a href="#pricing">Pricing</a> for details.</p></details>
+        <details><summary>Do I need to prepare anything?</summary><p>Nope! Just bring yourself and a bit of curiosity. We share the topic in advance if you'd like to think about it.</p></details>
+        <details><summary>How do I sign up?</summary><p>Send us a DM on Instagram <a href="https://www.instagram.com/early_birds_sc/" target="_blank" rel="noopener">@early_birds_sc</a> and we'll save you a seat.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final" id="join">
+    <div class="wrap">
+      <div class="final-card reveal">
+        <span class="plus p1" aria-hidden="true">+</span>
+        <span class="plus p2" aria-hidden="true">+</span>
+        <span class="eyebrow">Join us</span>
+        <h2>Find your voice. Find your community.</h2>
+        <p>Your seat at the next meetup is waiting. Send us a message on Instagram and we'll tell you everything you need to know.</p>
+        <div class="final-actions">
+          <a href="https://ig.me/m/early_birds_sc" target="_blank" rel="noopener" class="btn btn-primary">Message us on Instagram
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://www.instagram.com/early_birds_sc/" target="_blank" rel="noopener" class="btn btn-ghost">Follow @early_birds_sc</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo"><span class="logo-mark"><img src="assets/logo.jpg" alt="" onerror="this.replaceWith(document.createTextNode('🐦'))"></span><span class="logo-text">Early Birds<small>Speaking Club</small></span></div>
+      <ul class="foot-links">
+        <li><a href="#why">Why us</a></li>
+        <li><a href="#how">Meetups</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#founders">Founders</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://www.instagram.com/early_birds_sc/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Early Birds Speaking Club 🕊️</span>
+      <span>A space for women to talk, connect &amp; grow</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // sticky nav border
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn'), links = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // hero video: show fallback until a source actually loads
+  const video = document.getElementById('heroVideo'), frame = document.getElementById('videoFrame'), soundBtn = document.getElementById('soundBtn');
+  video.addEventListener('loadeddata', () => { frame.classList.add('has-video'); soundBtn.hidden = false; });
+  soundBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    soundBtn.textContent = video.muted ? '🔇 Sound on' : '🔊 Sound off';
+    if (!video.muted) video.play();
+  });
+
+  // reels play only while on screen
+  const rio = new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { v.play().catch(()=>{}); } else { v.pause(); }
+  }), {threshold:.4});
+  document.querySelectorAll('.reel video').forEach(v => rio.observe(v));
+
+  // reveal on scroll
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
